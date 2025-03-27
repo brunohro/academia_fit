@@ -9,5 +9,8 @@
 </head>
 <body>
     Página inicial
+    {% for personal in personais %}
+        <li>{{personal.nome}} -- {{personal.idade}}</li>
+    {% endfor %}
 </body>
 </html>

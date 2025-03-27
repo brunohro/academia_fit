@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from academia.views import index
+from academia.views import cadastro_personal, editar_personal, remover_personal
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index, name="index"),
+    path("cadastro_personal/", cadastro_personal, name="cadastro_personal"),
+    path("editar_personal/ <int:id>", editar_personal, name="editar_personal"),
+    path("remover_personal/ <int:id>", remover_personal, name="remover_personal"),
 ]
