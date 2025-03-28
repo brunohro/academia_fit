@@ -15,9 +15,19 @@
     <main class="container">
         <section>
             <h2>Lista de Alunos</h2>
+            <a href="{% url 'cadastro_aluno' %}" class="btn btn-add">Adicionar Aluno</a>
             <ul class="lista">
                 {% for aluno in alunos %}
-                    <li>{{ aluno.nome }} - {{ aluno.idade }} anos</li>
+                    <li>
+                        {{ aluno.nome }} - {{ aluno.idade }} anos 
+                        {% if aluno.personal %} - Personal: {{ aluno.personal.nome }}
+                        {% else %} - Sem personal
+                        {% endif%}
+                        <div class="actions">
+                            <a href="{% url 'editar_aluno' aluno.id %}" class="btn btn-edit">Editar</a>
+                            <a href="{% url 'remover_aluno' aluno.id %}" class="btn btn-delete">Remover</a>
+                        </div>
+                    </li>
                 {% empty %}
                     <li>Nenhum aluno cadastrado.</li>
                 {% endfor %}
