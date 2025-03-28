@@ -14,15 +14,6 @@ class Pessoa(models.Model):
     
     def __str__(self):
         return self.nome
-    
-class Aluno(Pessoa):
-    peso = models.FloatField()
-    altura = models.FloatField()
-
-    class Meta:
-        verbose_name = "Aluno"
-        verbose_name_plural = "Alunos"
-        
 
 class Personal(Pessoa):
     especialidade = models.CharField(max_length=100)
@@ -31,3 +22,13 @@ class Personal(Pessoa):
     class Meta:
         verbose_name = "Personal Trainer"
         verbose_name_plural = "Personais Trainers"
+
+class Aluno(Pessoa):
+    peso = models.FloatField()
+    altura = models.FloatField()
+    personal = models.ForeignKey(Personal, on_delete= models.SET_NULL, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Aluno"
+        verbose_name_plural = "Alunos"
+        
