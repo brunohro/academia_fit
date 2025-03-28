@@ -26,9 +26,16 @@
 
         <section>
             <h2>Lista de Personais</h2>
+            <a href="{% url 'cadastro_personal' %}" class="btn btn-add">Adicionar Personal</a>
             <ul class="lista">
                 {% for personal in personais %}
-                    <li>{{ personal.nome }} - {{ personal.idade }} anos</li>
+                    <li>
+                        {{ personal.nome }} - {{ personal.idade }} anos
+                        <div class="actions">
+                            <a href="{% url 'editar_personal' personal.id %}" class="btn btn-edit">Editar</a>
+                            <a href="{% url 'remover_personal' personal.id %}" class="btn btn-delete">Remover</a>
+                        </div>
+                    </li>
                 {% empty %}
                     <li>Nenhum personal cadastrado.</li>
                 {% endfor %}

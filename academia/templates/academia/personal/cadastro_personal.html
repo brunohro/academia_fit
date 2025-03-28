@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    Cadastro de Personal
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="form-actions">
+            <a type="button" class="cancel-btn" href="#">Cancelar</a>
+            <button type="submit" class="submit-btn">CADASTRAR</button>
+        </div>
+    </form>
 </body>
 </html>
