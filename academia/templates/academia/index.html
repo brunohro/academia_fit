@@ -1,16 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Alunos e Personais</title>
     <link rel="stylesheet" href="{% static 'academia/css/style.css' %}">
 </head>
 <body>
-    Página inicial
-    {% for personal in personais %}
-        <li>{{personal.nome}} -- {{personal.idade}}</li>
-    {% endfor %}
+    <header>
+        <h1>Página Inicial</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Lista de Alunos</h2>
+            <ul class="lista">
+                {% for aluno in alunos %}
+                    <li>{{ aluno.nome }} - {{ aluno.idade }} anos</li>
+                {% empty %}
+                    <li>Nenhum aluno cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Lista de Personais</h2>
+            <ul class="lista">
+                {% for personal in personais %}
+                    <li>{{ personal.nome }} - {{ personal.idade }} anos</li>
+                {% empty %}
+                    <li>Nenhum personal cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
